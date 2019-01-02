@@ -110,4 +110,29 @@ end
 
 class BookInStock
 # YOUR CODE HERE
+  def initialize(isbn, price)
+    if isbn.empty? or price <= 0
+      raise ArgumentError, 'Either string is empty or price is <= 0. CHECK!'
+    end
+    @isbn = isbn
+    @price = price
+  end
+
+  def isbn
+    @isbn
+  end
+  def isbn=(new_isbn_string)
+    @isbn = new_isbn_string
+  end
+
+  def price
+    @price
+  end
+  def price=(new_price)
+    @price = new_price
+  end
+
+  def price_as_string
+    "$%.2f" % [@price]
+  end
 end
