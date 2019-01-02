@@ -3,12 +3,39 @@
 # Part 1
 
 def sum arr
-  # YOUR CODE HERE
+  output = 0
+  arr.each_entry do |i|
+    output += i
+  end
+  return output
 end
 
+input_arr = [1,5,4,2]
+p sum(input_arr)
+
 def max_2_sum arr
-  # YOUR CODE HERE
+  if arr.length <= 1
+    return arr.length == 1 ? arr[0] : 0
+  end
+  if arr[0] >= arr[1]
+    biggest = arr[0]
+    next_biggest = arr[1]
+  else
+    biggest = arr[1]
+    next_biggest = arr[0]
+  end
+
+  arr[2,arr.length].each_entry do |i|
+    if i > biggest
+      biggest = next_biggest
+    elsif i > next_biggest
+      next_biggest = i
+    end
+  end
+  biggest + next_biggest
 end
+p max_2_sum(input_arr)
+
 
 def sum_to_n? arr, n
   # YOUR CODE HERE
