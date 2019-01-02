@@ -71,15 +71,40 @@ end
 
 def starts_with_consonant? s
   vowels = %w(a e i o u)
-  if vowels.include?(s[0])
+  non_letters = %w(! @ # $ % ^ & * ( ) )
+  if s.empty?
     return false
   end
-  true
+  p vowels
+  p s[0].downcase
+  if s[0].is_a? String and !non_letters.include? s[0]
+    # If the first character is a vowel, then it does not start with a consonant
+    return (vowels.include? s[0].downcase) ? false : true
+  end
+  false
 end
 
+
 def binary_multiple_of_4? s
-  # YOUR CODE HERE
+  if s.length < 3
+    if s == "00" or s == "0"
+      return true
+    end
+    return false
+  end
+  s.each_char do |i|
+    if i != "0" and i != "1"
+      puts "2"
+      return false
+    end
+  end
+
+  if s[-1] == "0" and s[-2] == "0"
+    return true
+  end
+   false
 end
+
 
 # Part 3
 
